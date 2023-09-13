@@ -11,10 +11,6 @@ turtlescreen.bgpic("turtlespace.gif")
 #turtlescreen.setup(width=.75, height=0.5, startx=None, starty=None)
 # turtlescreen.bgcolor("light yellow")
 
-
-
-
-
 #Sound Systems
 pygame.init()
 pygame.mixer.init()
@@ -31,6 +27,41 @@ def stop_music():
     elif m==1:
         pygame.mixer.unpause()
         m = 0
+
+
+#gameoverturtle
+gameoverturtle= turtle.Turtle()
+gameoverturtle.hideturtle()
+gameoverturtle.color("yellow")
+gameoverturtle.penup()
+def gameover(*args):
+    gameoverturtle.write(f"GAME OVER.. SCORE : {score}",align="center",font=('Courier New',50 , "bold"))
+
+
+
+#CountdownTurtle
+counttime=7
+countdown_turtle=turtle.Turtle()
+countdown_turtle.hideturtle()
+countdown_turtle.color("red")
+countdown_turtle.penup()
+countdown_turtle.goto(100,250)
+countdown_turtle.write(f" {counttime}",align="left",font=('Courier New', 32, "bold"))
+
+def countdowndecrease(*args):
+    global counttime
+    if counttime>0:
+        countdown_turtle.clear()
+        counttime-=1
+        countdown_turtle.write(f" {counttime}", align="left", font=('Courier New', 32, "bold"))
+        turtlescreen.ontimer(fun=countdowndecrease,t=1000)
+    else:
+        instance.hideturtle()
+        gameover()
+
+
+
+countdowndecrease()
 
 
 #Scoreboard and Turtle positioning again
@@ -58,7 +89,6 @@ def scoreincrease(*args):
     pen.clear()
     pen.color("light blue")
     pen.write(f"Score: {score}", align="center", font=('Courier New', 32, "bold"))
-
 
 
 #randomturtle
