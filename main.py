@@ -40,20 +40,20 @@ def gameover(*args):
 
 
 #CountdownTurtle
-counttime=7
+counttime=20
 countdown_turtle=turtle.Turtle()
 countdown_turtle.hideturtle()
-countdown_turtle.color("red")
+countdown_turtle.color("yellow")
 countdown_turtle.penup()
-countdown_turtle.goto(100,250)
-countdown_turtle.write(f" {counttime}",align="left",font=('Courier New', 32, "bold"))
+countdown_turtle.goto(230,250)
+countdown_turtle.write(f" TIME: {counttime} ",align="center",font=('Courier New', 20, "bold"))
 
 def countdowndecrease(*args):
     global counttime
     if counttime>0:
         countdown_turtle.clear()
         counttime-=1
-        countdown_turtle.write(f" {counttime}", align="left", font=('Courier New', 32, "bold"))
+        countdown_turtle.write(f" TIME: {counttime} ",align="center",font=('Courier New', 20, "bold"))
         turtlescreen.ontimer(fun=countdowndecrease,t=1000)
     else:
         instance.hideturtle()
@@ -94,6 +94,7 @@ def scoreincrease(*args):
 #randomturtle
 instance = turtle.Turtle()
 instance.shape("turtle")
+instance.color("white")
 instance.shapesize(2,2)
 instance.speed(0)
 turtle.tracer()#n=2, delay=0
